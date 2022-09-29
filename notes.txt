@@ -1,0 +1,5 @@
+-- This Prisma schema defines two models, each of which will map to a table in the underlying database: User 
+and Post. Notice that there's also a relation (one-to-many) between the two models, via the author 
+field on Post and the posts field on User. << Is Postgres No-SQL?
+
+-- 
