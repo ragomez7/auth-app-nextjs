@@ -1,17 +1,11 @@
-import React, { useEffect } from "react"
-import { GetServerSideProps } from "next"
-import { GetStaticProps } from "next"
-import prisma from '../lib/prisma';
+import React from "react"
 import Layout from "../components/Layout"
-import IndexPage from './login/random'
-import IndexPage2 from './login'
 
 
 const Index = (props) => {
   return (
     <Layout>
-      <IndexPage />
-      {/* <IndexPage2 /> */}
+      Hello
     </Layout>
   )
 }
