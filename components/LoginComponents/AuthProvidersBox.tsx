@@ -59,8 +59,14 @@ const AuthProvidersBox = ({ providers }) => {
           },
         }}
       />
+      <IconButton
+      onClick={() => signIn(providers.github.id)}
+        sx={{
+          padding: 0,
+        }}
+      >
       <GitHubIcon
-        onClick={() => signIn(providers.github.id)}
+        
         sx={{
           width: iconDim,
           height: iconDim,
@@ -69,6 +75,7 @@ const AuthProvidersBox = ({ providers }) => {
           },
         }}
       />
+      </IconButton>
     </Box>
   );
 };
