@@ -30,5 +30,5 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/api/auth/[...nextAuth].js", "controllers/index.js", "components/ProfileComponents/TailwindProfileCardHeader.tsx"  ]
+, "pages/api/auth/[...nextAuth].js", "controllers/index.js", "components/ProfileComponents/TailwindProfileCardHeader.tsx", "pages/api/auth/login/index_2.jsx", "pages/login/random.tsx"  ]
 }
