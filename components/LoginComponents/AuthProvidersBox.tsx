@@ -50,31 +50,32 @@ const AuthProvidersBox = ({ providers }) => {
           },
         }}
       />
-      <TwitterIcon
-        sx={{
-          width: iconDim,
-          height: iconDim,
-          "& path": {
-            fill: isLight ? undefined : "#1ca4f4",
-          },
-        }}
-      />
+      <IconButton onClick={() => signIn(providers.twitter.id)}>
+        <TwitterIcon
+          sx={{
+            width: iconDim,
+            height: iconDim,
+            "& path": {
+              fill: isLight ? undefined : "#1ca4f4",
+            },
+          }}
+        />
+      </IconButton>
       <IconButton
-      onClick={() => signIn(providers.github.id)}
+        onClick={() => signIn(providers.github.id)}
         sx={{
           padding: 0,
         }}
       >
-      <GitHubIcon
-        
-        sx={{
-          width: iconDim,
-          height: iconDim,
-          "& path": {
-            fill: isLight ? undefined : "white",
-          },
-        }}
-      />
+        <GitHubIcon
+          sx={{
+            width: iconDim,
+            height: iconDim,
+            "& path": {
+              fill: isLight ? undefined : "white",
+            },
+          }}
+        />
       </IconButton>
     </Box>
   );
