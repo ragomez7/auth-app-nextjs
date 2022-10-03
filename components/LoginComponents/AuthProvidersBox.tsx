@@ -41,7 +41,7 @@ const AuthProvidersBox = ({ providers }) => {
           }}
         />
       </IconButton>
-      <FacebookIcon
+      {/* <FacebookIcon
         sx={{
           width: iconDim,
           height: iconDim,
@@ -49,7 +49,7 @@ const AuthProvidersBox = ({ providers }) => {
             fill: isLight ? undefined : "#44649e",
           },
         }}
-      />
+      /> */}
       <IconButton onClick={() => signIn(providers.twitter.id)}>
         <TwitterIcon
           sx={{
