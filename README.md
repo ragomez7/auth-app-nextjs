@@ -1,4 +1,4 @@
-<p>Deployed on rgrgrgprojects.com</p>
+<p>Deployed with Vercel on rgrgrgprojects.com</p>
 
 This is a simple app done to explore OAuth2.0 with Next.js' NextAuth libary and other tools. It's connected to a cloud Postgres db with Prisma.
 
