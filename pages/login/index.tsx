@@ -41,7 +41,7 @@ const RouteGuard = ({ children }) => {
         query: { returnUrl: router.asPath },
       });
     }
-  }, []);
+  }, [session]);
 
   return children;
 };

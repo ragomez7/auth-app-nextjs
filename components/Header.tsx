@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
+import Link from "next/link";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { ThemeOptions } from "@mui/material";
@@ -16,7 +16,7 @@ const Header: React.FC = () => {
   const { data: session, status } = useSession();
   const theme: ThemeOptions = useTheme();
   const { isLight, setIsLight } = useContext(ModeContext);
-  
+
   const Right = () => {
     if (status === "loading") {
       return (
@@ -33,12 +33,11 @@ const Header: React.FC = () => {
     if (session) {
       return (
         <div className="right">
-          <p>
-            {session?.user?.name} ({session?.user?.email})
-          </p>
-          <button onClick={() => signOut()}>
-            <a>Log out</a>
-          </button>
+          <Link href="/profile">
+            <Button>
+              {session?.user?.name} ({session?.user?.email})
+            </Button>
+          </Link>
           <style jsx>{`
             a {
               text-decoration: none;
@@ -75,9 +74,6 @@ const Header: React.FC = () => {
     } else {
       return (
         <div className="right">
-          {/* <Link href="/api/auth/signin">
-            <a data-active={isActive("/signup")}>Log in</a>
-          </Link> */}
           <style jsx>{`
             a {
               text-decoration: none;
