@@ -10,18 +10,22 @@ const Index = (props) => {
     <Layout>
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: 30
         }}
       >
-      <Link href="/login">
-        <Button variant="outlined"
-          sx={{
-            backgroundColor: 'black'
-          }}
-        >Login</Button>
-      </Link>
+        <Link href="/login">
+          <Button
+            variant="outlined"
+            sx={{
+              backgroundColor: "black",
+            }}
+          >
+            Login
+          </Button>
+        </Link>
       </Box>
     </Layout>
   );

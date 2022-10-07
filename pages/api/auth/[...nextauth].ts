@@ -24,17 +24,6 @@ const options = {
       clientSecret: process.env.TWITTER_CLIENT_SECRET as string,
       version: "2.0",
     })
-    // GoogleProvider({
-    //   clientId: process.env.GOOGLE_ID,
-    //   clientSecret: process.env.GOOGLE_SECRET,
-    //   authorization: {
-    //     params: {
-    //       prompt: "consent",
-    //       access_type: "offline",
-    //       response_type: "code"
-    //     }
-    //   }
-    // })
   ],
   adapter: PrismaAdapter(prisma),
 //   secret: process.env.SECRET,

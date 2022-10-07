@@ -75,9 +75,9 @@ const Header: React.FC = () => {
     } else {
       return (
         <div className="right">
-          <Link href="/api/auth/signin">
+          {/* <Link href="/api/auth/signin">
             <a data-active={isActive("/signup")}>Log in</a>
-          </Link>
+          </Link> */}
           <style jsx>{`
             a {
               text-decoration: none;
