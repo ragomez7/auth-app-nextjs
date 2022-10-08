@@ -1,8 +1,9 @@
+import React from "react";
 import Button from "@mui/material/Button";
 import { useMediaQuery } from "usehooks-ts";
 
 interface BackButtonProps {
-    handleClickBack: (event: React.BaseSyntheticEvent) => void
+  handleClickBack: (event: React.BaseSyntheticEvent) => void
 }
 
 const BackButton: React.FC<BackButtonProps> = ({ handleClickBack }) => {

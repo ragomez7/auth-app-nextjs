@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
 import UploadPhotoDialog from './UploadPhotoDialog'
 
 interface ChangePhotoComponentProps {
@@ -56,6 +55,7 @@ const ChangePhotoComponent: React.FC<ChangePhotoComponentProps> = ({
         image={image}
         updateData={updateData}
         setProfileImage={setProfileImage}
+        handleDialogClose={handleDialogClose}
         >
           
         </UploadPhotoDialog>

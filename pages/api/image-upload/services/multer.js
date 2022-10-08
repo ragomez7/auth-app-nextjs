@@ -1,9 +1,9 @@
-const multer = require('multer');
+import multer from 'multer';
 
 const ALLOWED_FORMAT = ['image/jpeg', 'image/png', 'image/jpg'];
 
 const storage = multer.memoryStorage();
-exports.upload = multer({
+export const upload = multer({
   storage,
   fileFilter: function(req, file, cb) {
     if (ALLOWED_FORMAT.includes(file.mimetype)) {

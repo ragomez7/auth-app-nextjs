@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { SessionProvider } from "next-auth/react";
 import { AppProps } from "next/app";
 import { grey } from "@mui/material/colors";
-import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import '../styles/globals.css'
 
 declare module "@mui/material/styles" {
