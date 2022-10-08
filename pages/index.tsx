@@ -4,10 +4,9 @@ import Layout from "../components/Layout";
 import { Button } from "@mui/material";
 import Link from "next/link";
 import { Box } from "@mui/material";
-import SignIn from "./login";
 
-const Index = (props) => {
-  const { data: session, status } = useSession();
+const Index = () => {
+  const { data: session } = useSession();
   return (
     <Layout>
       <Box

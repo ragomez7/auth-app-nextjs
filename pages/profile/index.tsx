@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { signOut, useSession } from "next-auth/react";
+import {  useSession } from "next-auth/react";
 import Typography from "@mui/material/Typography";
 import useSWR from "swr";
 import ProfileViewPage from "../../components/ProfileComponents/view";
@@ -38,6 +38,7 @@ const ProfileIndexPage = () => {
     email: "",
     password: "",
   });
+
   interface fetchStateProps {
     status: string;
     errorMessage: string | null;
@@ -50,10 +51,7 @@ const ProfileIndexPage = () => {
 
   const theSession = useSession();
 
-  const { data: session, status } = theSession;
-
-  console.log(theSession);
-
+  const { data: session } = theSession;
 
   const email: emailType = session?.["user"] && session?.["user"]["email"];
   const { user, isLoading, isError } = useUser(email);

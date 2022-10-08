@@ -1,12 +1,15 @@
-import type { FunctionComponent } from "react";
-import React, { useState, useMemo } from "react";
+import { FunctionComponent } from "react";
+import React, { useState } from "react";
 import { useMutate } from "restful-react";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
+import CloseIcon from "@mui/icons-material/Close";
+import { IconButton } from "@mui/material";
 
 export interface DialogTitleProps {
   id: string;
@@ -14,11 +17,7 @@ export interface DialogTitleProps {
 }
 
 const BootstrapDialogTitle: React.FC<DialogTitleProps> = (props) => {
-  const {
-    children,
-    sx,
-    ...other
-  } = props;
+  const { children, sx, ...other } = props;
 
   return (
     <DialogTitle sx={sx} {...other}>
@@ -32,28 +31,26 @@ interface UploadPhotoDialogProps {
   image: string;
   updateData: () => void;
   setProfileImage: (newImageUrl: string) => void;
+  handleDialogClose: (event: React.BaseSyntheticEvent) => void;
 }
 const UploadPhotoDialog: FunctionComponent<UploadPhotoDialogProps> = ({
   open,
   image,
   updateData,
   setProfileImage,
+  handleDialogClose
 }) => {
-  const [selectedImage, setSelectedImage] = useState(new MediaSource());
-  const [images, setImages] = useState<any>([]); // {} [] functions Set
+  const [selectedImage, setSelectedImage] = useState(image);
 
-  const {
-    mutate: uploadImage,
-    loading,
-    error,
-  } = useMutate({
+  const { mutate: uploadImage } = useMutate({
     verb: "POST",
     path: "api/image-upload",
   });
 
   const handleChangeProfilePhoto = (event: any) => {
     console.log(event.target.files[0]);
-    setSelectedImage(event.target.files[0]);
+    const updatedImgURLString = URL.createObjectURL(event.target.files[0]);
+    setSelectedImage(updatedImgURLString);
   };
 
   const handleImageUpload = () => {
@@ -62,10 +59,8 @@ const UploadPhotoDialog: FunctionComponent<UploadPhotoDialogProps> = ({
     }
     const formData: any = new FormData();
     formData.append("image", selectedImage);
-    console.log("Ll");
     uploadImage(formData)
       .then((uploadedImage) => {
-        console.log(`uploaded Image: ${uploadedImage.url}`);
         setProfileImage(uploadedImage.url);
         updateData();
       })
@@ -90,13 +85,19 @@ const UploadPhotoDialog: FunctionComponent<UploadPhotoDialogProps> = ({
         sx={{
           width: 360,
           height: 40,
-          paddingLeft: 1.5,
+          paddingX: 1.5,
           display: "flex",
+          justifyContent: "space-between",
           flexDirection: "row",
           alignItems: "center",
         }}
       >
-        Upload New Photo
+        <p>Upload New Photo</p>
+        <IconButton
+          onClick={handleDialogClose}
+        >
+          <CloseIcon />
+        </IconButton>
       </BootstrapDialogTitle>
       <DialogContent
         dividers
@@ -118,7 +119,7 @@ const UploadPhotoDialog: FunctionComponent<UploadPhotoDialogProps> = ({
             borderRadius: 0.8,
           }}
           alt="User profile picture."
-          src={URL.createObjectURL(selectedImage)}
+          src={selectedImage}
         />
       </DialogContent>
       <DialogActions
@@ -145,9 +146,9 @@ const UploadPhotoDialog: FunctionComponent<UploadPhotoDialogProps> = ({
             }}
             accept=".jpg, .png, .jpeg"
           />
-          <button onClick={handleImageUpload} disabled={!selectedImage}>
+          <Button onClick={handleImageUpload} disabled={!selectedImage}>
             Upload
-          </button>
+          </Button>
         </Stack>
       </DialogActions>
     </Dialog>

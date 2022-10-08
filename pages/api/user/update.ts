@@ -1,4 +1,3 @@
-import { getSession } from "next-auth/react";
 import prisma from "../../../lib/prisma";
 
 export default async function handle(req: any, res: any) {
@@ -10,7 +9,6 @@ export default async function handle(req: any, res: any) {
     profilePassword,
     profileImage,
   } = req.body;
-  console.log(profileImage)
   const result = await prisma.user.update({
     where: {
       email: profileEmail,

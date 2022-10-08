@@ -1,9 +1,8 @@
-import React, { useContext, useEffect } from "react";
-import { getProviders, signIn, useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import React, { useContext } from "react";
+import { getProviders } from "next-auth/react";
+import RouteGuard from "../../components/RouteGuard";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import KeyIcon from "@mui/icons-material/Key";
 import Button from "@mui/material/Button";
@@ -12,8 +11,7 @@ import { useTheme } from "@mui/material/styles";
 import Layout from "../../components/Layout";
 import { ModeContext } from "../_app";
 import AuthProvidersBox from "../../components/LoginComponents/AuthProvidersBox";
-import { useMediaQuery } from "usehooks-ts";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const FirstLevelBox = styled.div`
   width: 100%;
@@ -31,22 +29,20 @@ const SecondLevelBox = styled.div`
   padding: 93px 57px 0px 57px;
 `;
 
-const RouteGuard = ({ children }) => {
-  const router = useRouter();
-  const { data: session, status } = useSession();
-  useEffect(() => {
-    if (session) {
-      router.push({
-        pathname: "/",
-        query: { returnUrl: router.asPath },
-      });
-    }
-  }, [session]);
-
-  return children;
-};
-export default function SignIn({ providers }) {
-  console.log(providers);
+interface SignInProps {
+  providers: {
+    google: {
+      id;
+    };
+    twitter: {
+      id;
+    };
+    github: {
+      id;
+    };
+  };
+}
+const SignIn: React.FC<SignInProps> = ({ providers }) => {
   const theme: ThemeOptions = useTheme();
   const { isLight } = useContext(ModeContext);
 
@@ -163,7 +159,9 @@ export default function SignIn({ providers }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export default SignIn
+
+export async function getServerSideProps() {
   const providers = await getProviders();
   return {
     props: { providers },

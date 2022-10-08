@@ -21,11 +21,11 @@ const ProfileCardRow: FunctionComponent<ProfileCardRowProps> = ({
 }) => {
   const isXs = useMediaQuery("(max-width: 360px)");
   const [profileImage, setProfileImage] = useState(image);
-  const [openDialog, setOpenDialog] = useState<boolean>(false);
   const theme: ThemeOptions = useTheme()
   const { isLight } = useContext(ModeContext)
   useEffect(() => {
     setProfileImage(image);
+    console.log(`setProfileImage ${image}`)
   }, [image]);
 
   return (
