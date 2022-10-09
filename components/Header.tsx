@@ -110,6 +110,11 @@ const Header: React.FC = () => {
         backgroundColor: isLight ? theme?.colors?.white : theme?.colors?.black,
       }}
     >
+      {router.pathname !== "/" ? <Link href="/">
+        <Button>
+          Home
+        </Button>
+      </Link>: undefined}
       <Button onClick={() => setIsLight(!isLight)}>
         {isLight ? "Dark Mode" : "Light Mode"}
       </Button>
