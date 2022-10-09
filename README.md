@@ -5,6 +5,7 @@ This is a simple (yet complete) app done to explore OAuth2.0 with Next.js' NextA
 <h3>Explored features</h3>
 <ul>
   <li> React components </li>
+  <li> React hooks </li>
   <li> React Context API </li>
   <li> Custom theming </li>
   <li> Typescript </li>
