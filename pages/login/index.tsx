@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { getProviders } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import RouteGuard from "../../components/RouteGuard";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
@@ -40,11 +41,15 @@ interface SignInProps {
     github: {
       id;
     };
+    email: {
+      id;
+    }
   };
 }
 const SignIn: React.FC<SignInProps> = ({ providers }) => {
   const theme: ThemeOptions = useTheme();
   const { isLight } = useContext(ModeContext);
+  console.log(providers)
 
   return (
     <Layout>
@@ -117,6 +122,7 @@ const SignIn: React.FC<SignInProps> = ({ providers }) => {
             />
             <Button
               variant="outlined"
+              onClick={() => signIn()}
               sx={{
                 color: "black",
                 textTransform: "none",

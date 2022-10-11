@@ -1,6 +1,6 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { useRouter } from "next/router";
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -10,9 +10,6 @@ import { ModeContext } from "../pages/_app";
 
 const Header: React.FC = () => {
   const router = useRouter();
-  const isActive: (pathname: string) => boolean = (pathname) =>
-    router.pathname === pathname;
-
   const { data: session, status } = useSession();
   const theme: ThemeOptions = useTheme();
   const { isLight, setIsLight } = useContext(ModeContext);
