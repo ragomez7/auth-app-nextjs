@@ -15,6 +15,7 @@ This is a simple (yet complete) app done to explore OAuth2.0 with Next.js' NextA
   <li> Styling demo with several libraries: TailwindCSS, styled-components </li>
   <li> MaterialUI components </li>
   <li> Cloud hosting pictures and db integration with cloudinary </li>
+  <li> Custom NextAuth login page </li>
 </ul>
 
 <h3>User stories</h3>
