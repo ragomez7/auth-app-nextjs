@@ -3,9 +3,6 @@ import { getProviders } from "next-auth/react";
 import { signIn } from "next-auth/react";
 import RouteGuard from "../../components/RouteGuard";
 import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import KeyIcon from "@mui/icons-material/Key";
 import Button from "@mui/material/Button";
 import { ThemeOptions } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
@@ -79,50 +76,9 @@ const SignIn: React.FC<SignInProps> = ({ providers }) => {
               Nothing in this world is harder than speaking the truth, nothing
               easier than flattery. — F. Dostoevsky
             </Typography>
-            <TextField
-              placeholder="Email"
-              InputProps={{
-                sx: {
-                  marginTop: "35px",
-                  width: "357px",
-                  height: "48px",
-                  color: isLight ? theme?.colors?.black : theme?.colors?.white,
-                  border: `1px solid ${theme?.colors?.grey}`,
-                },
-                startAdornment: (
-                  <MailOutlineIcon
-                    sx={{
-                      padding: 0,
-                      paddingRight: 1,
-                    }}
-                  />
-                ),
-              }}
-            />
-
-            <TextField
-              placeholder="Password"
-              InputProps={{
-                sx: {
-                  marginTop: "16px",
-                  width: "357px",
-                  height: "48px",
-                  color: isLight ? theme?.colors?.black : theme?.colors?.white,
-                  border: `1px solid ${theme?.colors?.grey}`,
-                },
-                startAdornment: (
-                  <KeyIcon
-                    sx={{
-                      padding: 0,
-                      paddingRight: 1,
-                    }}
-                  />
-                ),
-              }}
-            />
             <Button
               variant="outlined"
-              onClick={() => signIn()}
+              onClick={() => signIn(providers.email.id)}
               sx={{
                 color: "black",
                 textTransform: "none",
@@ -131,7 +87,7 @@ const SignIn: React.FC<SignInProps> = ({ providers }) => {
                 height: "48px",
               }}
             >
-              Sign-up
+              Sign in with E-Mail
             </Button>
             <Typography
               sx={{
